@@ -71,7 +71,6 @@ public class RegistrarActivity extends AppCompatActivity implements Response.Lis
             {
                 jsonObject = jsonArray.getJSONObject(i);
                 Preguntas[i] = jsonObject.optString("Pregunta");
-                Preguntas[i] = Preguntas[i].replace(" ", "");
             }
             List<String> listSpinner = Arrays.asList(Preguntas);
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listSpinner);
