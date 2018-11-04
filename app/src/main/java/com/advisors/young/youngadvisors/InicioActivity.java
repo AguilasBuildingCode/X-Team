@@ -21,6 +21,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -58,9 +59,10 @@ public class InicioActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        requestQueue = Volley.newRequestQueue(this);
         Intent intent = getIntent();
         idUsuarios = intent.getStringExtra("idUsuarios");
-        String url = "https://aaron-lkbron.000webhostapp.com/PHP/Terminal.php?Consulta=SELECT%20*%20FROM%20Usuarios%20WHERE%20idUsuario%20=%20'"+ idUsuarios +"'";
+        String url = "https://aaron-lkbron.000webhostapp.com/PHP/Terminal.php?Consulta=SELECT%20*%20FROM%20Usuarios%20WHERE%20idUsuarios%20=%20'"+ idUsuarios +"'";
         url = url.replace(" ", "%20");
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
         requestQueue.add(jsonObjectRequest);

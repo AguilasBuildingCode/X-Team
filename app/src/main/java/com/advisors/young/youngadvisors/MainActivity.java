@@ -7,13 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.advisors.young.youngadvisors.Entidades.Usuarios;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -31,7 +29,6 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         usuario = findViewById(R.id.ETUsuario);
         password = findViewById(R.id.ETPass);
         requestQueue = Volley.newRequestQueue(this);
