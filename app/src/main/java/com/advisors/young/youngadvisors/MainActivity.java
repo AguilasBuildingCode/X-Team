@@ -24,7 +24,9 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
     ProgressDialog progreso;
     RequestQueue requestQueue;
     JsonObjectRequest jsonObjectRequest;
+    public final static String id = "idUsuarios";
     Usuarios UsuarioActivo = new Usuarios();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
                 usuario.setText("");
                 password.setText("");
                 Intent intent = new Intent(this, InicioActivity.class);
-                intent.putExtra("idUsuarios", UsuarioActivo.getIdUsuarios());
+                intent.putExtra(id, Integer.toString(UsuarioActivo.getIdUsuarios()));
                 startActivity(intent);
             }else {
                 progreso.hide();

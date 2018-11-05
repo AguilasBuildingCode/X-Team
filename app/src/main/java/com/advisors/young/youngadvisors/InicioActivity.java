@@ -13,7 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-
+import android.widget.TextView;
+import android.widget.Toast;
 import com.advisors.young.youngadvisors.Entidades.Usuarios;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -60,7 +61,7 @@ public class InicioActivity extends AppCompatActivity
 
         requestQueue = Volley.newRequestQueue(this);
         Intent intent = getIntent();
-        idUsuarios = intent.getStringExtra("idUsuarios");
+        idUsuarios = intent.getStringExtra(MainActivity.id);
         String url = "https://aaron-lkbron.000webhostapp.com/PHP/Terminal.php?Consulta=SELECT%20*%20FROM%20Usuarios%20WHERE%20idUsuarios%20=%20'"+ idUsuarios +"'";
         url = url.replace(" ", "%20");
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
@@ -145,7 +146,7 @@ public class InicioActivity extends AppCompatActivity
             UsuarioActivo.setRespuesta2     (jsonObject.optString("Respuesta2"));
             UsuarioActivo.setSobre_mi       (jsonObject.optString("Sobre_mi"));
         }catch (Exception e){
-
+            Toast.makeText(this, "Error \n" + e, Toast.LENGTH_LONG).show();
         }
     }
 
