@@ -33,6 +33,7 @@ public class InicioActivity extends AppCompatActivity
     JsonObjectRequest jsonObjectRequest;
     String idUsuarios;
     Usuarios UsuarioActivo = new Usuarios();
+    TextView Nombre, Correo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +58,11 @@ public class InicioActivity extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View hView = navigationView.getHeaderView(0);
+        Nombre = hView.findViewById(R.id.TVNombreuser);
+        Correo = (TextView) hView.findViewById(R.id.TVCorreouser);
+        Bundle bundle = getIntent().getExtras();
+        int indentificar = bundle.getInt("identificador");
         navigationView.setNavigationItemSelectedListener(this);
 
         requestQueue = Volley.newRequestQueue(this);
@@ -145,6 +151,8 @@ public class InicioActivity extends AppCompatActivity
             UsuarioActivo.setPregunta2      (jsonObject.optString("Pregunta2"));
             UsuarioActivo.setRespuesta2     (jsonObject.optString("Respuesta2"));
             UsuarioActivo.setSobre_mi       (jsonObject.optString("Sobre_mi"));
+            Nombre.setText(UsuarioActivo.getNombre());
+            Correo.setText(UsuarioActivo.getCorreo());
         }catch (Exception e){
             Toast.makeText(this, "Error \n" + e, Toast.LENGTH_LONG).show();
         }

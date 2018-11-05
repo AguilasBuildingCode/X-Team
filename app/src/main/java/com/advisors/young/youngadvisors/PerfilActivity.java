@@ -3,12 +3,14 @@ package com.advisors.young.youngadvisors;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class PerfilActivity extends AppCompatActivity {
 
     String  Nombre, Apellidos, Correo, Telefono, Usuario, Password, Respuesta1, Respuesta2, Pregunta1, Pregunta2;
     TextView bienvenido;
+    ImageView Foto;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,5 +29,6 @@ public class PerfilActivity extends AppCompatActivity {
 
         bienvenido = findViewById(R.id.TVBienvenido);
         bienvenido.append(" " + Nombre);
+        Foto = findViewById(R.id.IVPerfil);
     }
 }
