@@ -5,11 +5,13 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.advisors.young.youngadvisors.Entidades.Usuarios;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -24,6 +26,18 @@ import java.util.Arrays;
 import java.util.List;
 
 public class RegistrarActivity extends AppCompatActivity implements Response.Listener<JSONObject>, Response.ErrorListener{
+
+    public final static String INombre = "Nombre";
+    public final static String IApellidos = "Apellidos";
+    public final static String ICorreo = "Correo";
+    public final static String ITelefono = "Telefono";
+    public final static String IUsuario = "Usuarios";
+    public final static String IPassword = "Password";
+    public final static String IPregunta1 = "Pregunta1";
+    public final static String IRespuesta1 = "Respuesta1";
+    public final static String IPregunta2 = "Pregunta2";
+    public final static String IRespuesta2 = "Respuesta2";
+
     EditText Nombre, Apellidos, Correo, Telefono, Usuario, Password, Respuesta1, Respuesta2;
     Spinner Pregunta1, Pregunta2;
     ProgressDialog progreso;
@@ -81,5 +95,25 @@ public class RegistrarActivity extends AppCompatActivity implements Response.Lis
             Toast.makeText(this, "Algo salio mal :( \n"+e.toString(), Toast.LENGTH_LONG).show();
         }
         progreso.hide();
+    }
+
+    public void Registrar(View view) {
+        if(!Nombre.getText().toString().isEmpty() && !Apellidos.getText().toString().isEmpty() && !Correo.getText().toString().isEmpty() && !Telefono.getText().toString().isEmpty() && !Usuario.getText().toString().isEmpty() && !Password.getText().toString().isEmpty() && !Respuesta1.getText().toString().isEmpty() && !Respuesta2.getText().toString().isEmpty()){
+                Intent intent = new Intent(this, PerfilActivity.class);
+                intent.putExtra(INombre, Nombre.getText().toString());
+                intent.putExtra(IApellidos, Apellidos.getText().toString());
+                intent.putExtra(ICorreo, Correo.getText().toString());
+                intent.putExtra(ITelefono, Telefono.getText().toString());
+                intent.putExtra(IUsuario, Usuario.getText().toString());
+                intent.putExtra(IPassword, Password.getText().toString());
+                intent.putExtra(IPregunta1, Pregunta1.getSelectedItem().toString());
+                intent.putExtra(IRespuesta1, Respuesta1.getText().toString());
+                intent.putExtra(IPregunta2, Pregunta2.getSelectedItem().toString());
+                intent.putExtra(IRespuesta2, Respuesta2.getText().toString());
+                startActivity(intent);
+        }
+        else {
+            Toast.makeText(this, "No puede dejar campos vacios", Toast.LENGTH_LONG).show();
+        }
     }
 }

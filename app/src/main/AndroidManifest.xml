@@ -22,7 +22,8 @@
             android:name=".InicioActivity"
             android:label="@string/title_activity_inicio"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".RegistrarActivity"></activity>
+        <activity android:name=".RegistrarActivity" />
+        <activity android:name=".PerfilActivity"></activity>
     </application>
 
 </manifest>

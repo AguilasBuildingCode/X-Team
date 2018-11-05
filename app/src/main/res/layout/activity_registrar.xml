@@ -349,6 +349,7 @@
                     android:id="@+id/BtnRegistrar"
                     android:layout_width="270dp"
                     android:layout_height="100dp"
+                    android:onClick="Registrar"
                     android:text="Registrar" />
 
                 <Space
