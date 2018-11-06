@@ -71,6 +71,8 @@ public class RegistrarActivity extends AppCompatActivity implements Response.Lis
     public void onErrorResponse(VolleyError error) {
         progreso.hide();
         Toast.makeText(this, "!Ups¡ \n" + error.toString(), Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     @Override
