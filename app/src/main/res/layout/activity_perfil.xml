@@ -87,6 +87,7 @@
                 android:layout_width="125dp"
                 android:layout_height="125dp"
                 android:layout_weight="1"
+                android:onClick="subirFoto"
                 app:srcCompat="@drawable/usuario" />
 
             <Space

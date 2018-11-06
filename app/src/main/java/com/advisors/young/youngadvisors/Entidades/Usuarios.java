@@ -1,12 +1,15 @@
 package com.advisors.young.youngadvisors.Entidades;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Picture;
+import android.util.Base64;
 
 public class Usuarios {
     private int idUsuarios, Correo_act, Tel_act;
     private String Nombre, Apellidos, Correo, Telefono,
-            Usuario, Password, Pregunta1, Respuesta1, Pregunta2, Respuesta2, Sobre_mi;
-    private Picture Foto;
+            Usuario, Password, Pregunta1, Respuesta1, Pregunta2, Respuesta2, Sobre_mi, dato;
+    private Bitmap Foto;
     /*
     public Usuarios(int idUsuarios, String Nombre, String Apellidos, String Correo, int Correo_Act,
                     String Telefono, int Tel_Act, String Usuario, String Password, String Pregunta1,
@@ -139,11 +142,25 @@ public class Usuarios {
         this.Sobre_mi = sobre_mi;
     }
 
-    public Picture getFoto() {
+    public Bitmap getFoto() {
         return Foto;
     }
 
-    public void setFoto(Picture foto) {
+    public void setFoto(Bitmap foto) {
         Foto = foto;
+    }
+
+    public String setDato(String dato){
+        this.dato = dato;
+        String r = "Correcto";
+        try{
+            byte[] byteCode = Base64.decode(dato, Base64.DEFAULT);
+            int alto = 150, ancho = 150;
+            Bitmap foto = BitmapFactory.decodeByteArray(byteCode, 0, byteCode.length);
+            this.Foto = Bitmap.createScaledBitmap(foto, alto, ancho, true);
+        }catch (Exception e){
+            r = e.toString();
+        }
+        return r;
     }
 }
