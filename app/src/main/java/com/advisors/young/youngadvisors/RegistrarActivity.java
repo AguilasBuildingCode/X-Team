@@ -16,10 +16,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -92,7 +90,8 @@ public class RegistrarActivity extends AppCompatActivity implements Response.Lis
             Pregunta2.setAdapter(adapter);
         }catch (Exception e){
             progreso.hide();
-            Toast.makeText(this, "Algo salio mal :( \n"+e.toString(), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Algo salio mal :( \n"
+                    +e.toString(), Toast.LENGTH_LONG).show();
         }
         progreso.hide();
     }
@@ -113,7 +112,8 @@ public class RegistrarActivity extends AppCompatActivity implements Response.Lis
                 startActivity(intent);
         }
         else {
-            Toast.makeText(this, "No puede dejar campos vacios", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "No puede dejar campos vacios",
+                    Toast.LENGTH_LONG).show();
         }
     }
 }
